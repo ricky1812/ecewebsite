@@ -1,0 +1,68 @@
+from django.shortcuts import render, HttpResponseRedirect, redirect
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from .forms import UserForm,ProfileUpdateForm
+from django.core.files.storage import FileSystemStorage
+from .models import *
+
+def index(request):
+	return render(request,'ece/home.html')
+
+def signup(request):
+	if request.method=='POST':
+		form=UserForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password=form.cleaned_data.get('password1')
+			return redirect('login')
+	else:
+		form=UserForm()
+	args={'form': form}
+	return render(request,'ece/signup.html',args)
+
+def login_view(request):
+	message='Log In'
+	if request.method=='POST':
+		_username=request.POST['username']
+		_password=request.POST['password']
+		user=authenticate(username=_username,password=_password)
+		if user is not None:
+			if user.is_active:
+				login(request,user)
+				return redirect('/update')
+			else:
+				message='Not Activated'
+		else:
+			message='Invalid Login'
+	context={'message':message}
+	return render(request,'ece/login.html',context)
+
+@login_required
+def logout_view(request):
+	logout(request)
+	return redirect('/login/')
+
+
+@login_required
+def update_profile(request):
+	message='Update'
+	if request.method=='POST':
+		form=ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+		if form.is_valid:
+			form.save()
+
+			return redirect('/logout')
+		else:
+			message='Image size should be less tahn 1mb'
+			return redirect('/update')
+	else:
+		form=ProfileUpdateForm()
+	return render(request,'ece/formupdate.html',{'form':form,'message':message})
+
+def member_list(request):
+	profiles=Profile.objects.order_by('-year')
+	
+
+	return render(request,'ece/members.html',{'profiles':profiles})
