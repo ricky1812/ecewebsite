@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100%!important;
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.img-responsive {
+    background-size: cover;
+}
+
+@media(max-width: 968px) {
+    .img-responsive {
+        height: 500px!important;
+    }
+}
+
+@media(min-width: 968px) {
+    .img-responsive {
+        height: 650px!important;
+    }
+}
+
+#second,
+#third,
+#fourth {
+    display: none;
+}

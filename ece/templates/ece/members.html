@@ -1,8 +1,4 @@
-<style>
-#second,#third,#fourth{
-	display:none;
-}
-</style>
+
 {% extends 'base.html' %}
 {%load static%}
 
@@ -35,10 +31,15 @@ function myFunction3() {
 
 </script>
 <h1 style="text-align:center">Our Members</h1>
-<a class="btn btn-primary show" role="button" onclick="myFunction()">First</a>
-<a class="btn btn-primary show1" role="button" onclick="myFunction1()">Second</a>
-<a class="btn btn-primary show2" role="button" onclick="myFunction2()">third</a>
-<a class="btn btn-primary show3" role="button" onclick="myFunction3()">Fourth</a>
+<div class="container">
+<div class="row">
+<div>
+<a class="btn btn-primary show" role="button" onclick="myFunction()">First</a></div>
+<div><a class="btn btn-primary show1" role="button" onclick="myFunction1()">Second</a></div>
+<div><a class="btn btn-primary show2" role="button" onclick="myFunction2()">third</a></div>
+<div><a class="btn btn-primary show3" role="button" onclick="myFunction3()">Fourth</a></div>
+</div>
+</div>
 <section id="first">
 <h1>First Year</h1>
 </section>		
@@ -52,7 +53,7 @@ function myFunction3() {
 <h1>Fourth Year</h1>
 </section>	
 	{% for i in profiles %}
-		lists
+		
 		{{i.user.first_name}}
 		{{i.year}}
 		<img src="{{i.image.url}}" width="100" height="100" ><br>
