@@ -1,9 +1,57 @@
+<style>
+#second,#third,#fourth{
+	display:none;
+}
+</style>
 {% extends 'base.html' %}
 {%load static%}
 
 {% block body %}
-<h3>members</h3>
-		{% for i in profiles %}
+<script>
+function myFunction() {
+  document.getElementById("first").style.display = "block";
+  document.getElementById("second").style.display = "none";
+  document.getElementById("third").style.display = "none";
+  document.getElementById("fourth").style.display = "none";
+}
+function myFunction1() {
+  document.getElementById("first").style.display = "none";
+  document.getElementById("second").style.display = "block";
+  document.getElementById("third").style.display = "none";
+  document.getElementById("fourth").style.display = "none";
+}
+function myFunction2() {
+  document.getElementById("first").style.display = "none";
+  document.getElementById("second").style.display = "none";
+  document.getElementById("third").style.display = "block";
+  document.getElementById("fourth").style.display = "none";
+}
+function myFunction3() {
+  document.getElementById("first").style.display = "none";
+  document.getElementById("second").style.display = "none";
+  document.getElementById("third").style.display = "none";
+  document.getElementById("fourth").style.display = "block";
+}
+
+</script>
+<h1 style="text-align:center">Our Members</h1>
+<a class="btn btn-primary show" role="button" onclick="myFunction()">First</a>
+<a class="btn btn-primary show1" role="button" onclick="myFunction1()">Second</a>
+<a class="btn btn-primary show2" role="button" onclick="myFunction2()">third</a>
+<a class="btn btn-primary show3" role="button" onclick="myFunction3()">Fourth</a>
+<section id="first">
+<h1>First Year</h1>
+</section>		
+<section id="second">
+<h1>Second Year</h1>
+</section>	
+<section id="third">
+<h1>Third Year</h1>
+</section>	
+<section id="fourth">
+<h1>Fourth Year</h1>
+</section>	
+	{% for i in profiles %}
 		lists
 		{{i.user.first_name}}
 		{{i.year}}
@@ -12,3 +60,4 @@
 		{% endfor %}
 
 {% endblock body %}
+
