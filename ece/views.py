@@ -62,7 +62,10 @@ def update_profile(request):
 	return render(request,'ece/formupdate.html',{'form':form,'message':message})
 
 def member_list(request):
-	profiles=Profile.objects.order_by('-year')
-	
-
-	return render(request,'ece/members.html',{'profiles':profiles})
+	first_year=Profile.objects.filter(year='1').order_by('-user')
+	second_year=Profile.objects.filter(year='2').order_by('-user')
+	third_year=Profile.objects.filter(year='3').order_by('-user')
+	fourth_year=Profile.objects.filter(year='4').order_by('-user')
+	context = {'first_year':first_year,'second_year':second_year,'third_year':third_year,'fourth_year':fourth_year}
+     
+	return render(request,'ece/members.html',context)

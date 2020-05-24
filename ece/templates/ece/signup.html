@@ -1,4 +1,5 @@
-
+{% extends 'base.html' %}
+ {% block signup %}active{% endblock signup %}
 {% load static %}
 
 
@@ -6,7 +7,7 @@
 {% csrf_token %}
 <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
 
-<div class='container'>
+<div class='container my-3 ml-3'>
 <form method="post" action="">
 	{% csrf_token %}
 	{{form.as_p}}
