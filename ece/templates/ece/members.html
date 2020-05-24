@@ -1,14 +1,102 @@
-{% extends 'base.html' %}
-{%load static%}
+ {% extends 'base.html' %} {% block members %}active{% endblock members %} {%load static%} {% block body %}
+<script>
+    function myFunction() {
+        document.getElementById("first").style.display = "block";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "none";
+        document.getElementById("fourth").style.display = "none";
+    }
 
-{% block body %}
-<h3>members</h3>
-		{% for i in profiles %}
-		lists
-		{{i.user.first_name}}
-		{{i.year}}
-		<img src="{{i.image.url}}" width="100" height="100" ><br>
-		
-		{% endfor %}
+    function myFunction1() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("third").style.display = "none";
+        document.getElementById("fourth").style.display = "none";
+    }
 
+    function myFunction2() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "block";
+        document.getElementById("fourth").style.display = "none";
+    }
+
+    function myFunction3() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "none";
+        document.getElementById("fourth").style.display = "block";
+    }
+</script>
+<h1 id="mem" class="my-3" style="text-align:center;">Our Members</h1>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-sm-3 my-1 p-1" style="width: 100px;">
+            <a class="btn btn-outline-primary" role="button" onclick="myFunction()">First</a></div>
+        <div class="col-sm-3 my-1 p-1" style="width: 100px;"> <a class="btn btn-outline-primary " role="button" onclick="myFunction1()">Second</a></div>
+        <div class="col-sm-3 my-1 p-1" style="width: 100px;"> <a class="btn btn-outline-primary " role="button" onclick="myFunction2()">third</a></div>
+        <div class="col-sm-3 my-1 p-1" style="width: 100px;"> <a class="btn btn-outline-primary " role="button" onclick="myFunction3()">Fourth</a></div>
+    </div>
+</div>
+</div>
+<section id="first">
+    <h1 id="year">First Year</h1>
+    <div class="container">
+        <div class="row">
+
+            {% for i in first_year %}
+            <div class="col-md-4">
+                <div class="card m-3">
+                    <img src="{{i.image.url}}" class="img-fluid imgbox" alt="{{i.user.first_name}}" style="width:100%;height: 300px;">
+
+                    <h3 class="text-center">{{i.user.first_name}}</h3>
+
+                    <div class="mb-3 faicons">
+                        <ul>
+                            <li> <a href="#"><i class="fa fa-facebook fa-2x ml-3"></i></a></li>
+                            <li> <a href="#"><i class="fa fa-linkedin fa-2x ml-3"></i></a></li>
+                            <li> <a href="#"><i class="fa fa-phone fa-2x ml-3"></i></a></li>
+                            <li> <a href="#"><i class="fa fa-envelope fa-2x ml-3"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+<section id="second">
+    <h1 id="year">Second Year</h1>
+    <div class="container">
+        <div class="row">
+
+            {% for i in second_year %}
+            <div class="col-md-4">
+                <div class="card m-3">
+                    <img src="{{i.image.url}}" class="img-fluid imgbox" alt="{{i.user.first_name}}" style="width:100%;height: 300px;">
+
+                    <h3 class="text-center">{{i.user.first_name}}</h3>
+
+                    <div class="mb-3 faicons">
+                        <ul>
+                            <li> <a href="#"><i class="fa fa-facebook fa-2x ml-3"></i></a></li>
+                            <li> <a href="#"><i class="fa fa-linkedin fa-2x ml-3"></i></a></li>
+                            <li> <a href="#"><i class="fa fa-phone fa-2x ml-3"></i></a></li>
+                            <li> <a href="#"><i class="fa fa-envelope fa-2x ml-3"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+<section id="third">
+    <h1 id="year">Third Year</h1>
+</section>
+<section id="fourth">
+    <h1 id="year">Fourth Year</h1>
+</section>
 {% endblock body %}
